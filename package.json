@@ -1,0 +1,19 @@
+{
+  "name": "timestamp-microservice",
+  "version": "1.0.0",
+  "description": "Unix Timestamp Converter",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicholasRohrer/timestamp-microservice.git"
+  },
+  "author": "Nick Rohrer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NicholasRohrer/timestamp-microservice/issues"
+  },
+  "homepage": "https://github.com/NicholasRohrer/timestamp-microservice#readme"
+}
