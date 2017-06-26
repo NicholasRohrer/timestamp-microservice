@@ -8,7 +8,14 @@ var app = module.exports = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-
+// get call to return JSON that formats natural and unix dates
+app.get('/dateValues/:dateVal', function(req,res,next){
+    var dateVal = req.params.dateVal;
+    
+    
+    res.json({unix: dateVal});
+    return ; 
+});
 
 
 
