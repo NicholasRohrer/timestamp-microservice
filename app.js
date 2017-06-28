@@ -8,19 +8,35 @@ var app = module.exports = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-// get call to return JSON that formats natural and unix dates
+// GET call to return JSON that formats natural and unix dates
 app.get('/dateValues/:dateVal', function(req,res,next){
+    // gets the request data for date
     var dateVal = req.params.dateVal;
     
+    // options for formatting date in natural date format
+    var dateFormattingOptions = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+
+    if (isNaN(dateVal)){
+        var naturalDate = new Date(dateVal);
+        naturalDate = naturalDate.toLocaleDateString("en-us", dateFormattingOptions);
+        // formula for converting to unix time
+        var unixDate = new Date(dateVal).getTime()/1000;
+    } else {
+        var unixDate = dateVal;
+        //formula for converting to natural time
+        var naturalDate = new Date(dateVal * 1000);
+        naturalDate = naturalDate.toLocaleDateString("en-us", dateFormattingOptions);
+    } 
     
-    res.json({unix: dateVal});
+    res.json({unix: unixDate, natural: naturalDate});
     return ; 
 });
 
-
-
-
-
+// start server
 app.listen(3000, function(){
     console.log('Server running on port 3000');
 });
